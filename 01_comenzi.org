@@ -1,0 +1,105 @@
+* Comenzi uzuale
+
+- ~ls [LOCAȚIE]~ --- LiSt  
+  Listează fișierele dintr-o anumită locație. Dacă locația nu este dată, listează fișierele din directorul curent.
+  - ~-a~ --- All (include fișierele ascunse)
+  - ~-l~ --- Long (listare detaliată)
+  - ~-s~ --- Size (afișează dimensiunea fișierelor)
+
+- ~pwd~ --- Print Working Directory  
+  Afișează locația (directorul) curent(ă).
+
+- ~cd [TARGET]~ / ~chdir [TARGET]~  
+  Schimbă directorul curent.  
+  Dacă TARGET nu este definit, schimbă locația în ~$HOME~ (`~`).
+
+- ~cat [FIȘIER1 FIȘIER2 ...]~ --- ConCATenate  
+  Concatenează fișierele în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
+  - ~cat FIȘIER~  
+    Printează conținutul fișierului în stdout.
+  - ~cat FIȘIER1 FIȘIER2~  
+    Printează conținutul fișierelor FIȘIER1 și FIȘIER2 în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
+  - ~cat > FIȘIER~  
+    Citește din [[https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)][stdin]] și scrie în FIȘIER.
+
+- ~echo~  
+  Printează text cu newline.
+  - ~echo "Hello world!"~  
+    Printează `Hello world\n` în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
+  - ~echo "Hello world!" > FIȘIER~  
+    Printează `Hello world\n` în FIȘIER.
+
+- ~printf~  
+  Printează text fără newline implicit.
+  - ~printf "Hello world"~  
+    Printează `Hello world` fără newline în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
+  - ~printf "Hello world\n"~  
+    Printează `Hello world` cu newline în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
+  - ~printf "Hello world" > FIȘIER~  
+    Scrie `Hello world` în FIȘIER.
+  - ~printf "Hello world\n" > FIȘIER~  
+    Scrie `Hello world\n` în FIȘIER.
+
+- ~mkdir DIRECTOR~  
+  Creează un director.
+  - ~mkdir -p a/b/c~  
+    Creează directoare recursive.
+
+- ~touch FIȘIER~  
+  Creează un fișier gol sau actualizează timestamp-ul.
+
+- ~cp SURSĂ [SURSĂ2 SURSĂ3 ...] DESTINAȚIE~  
+  Copiază fișiere sau directoare.
+  - ~-r~ --- Recursive (pentru directoare)
+
+- ~mv SURSĂ [SURSĂ2 SURSĂ3 ...] DESTINAȚIE~  
+  Mută sau redenumește fișiere/directoare. În cazul redenumirii, se acceptă doar o singură sursă.
+
+- ~rm FIȘIER~  
+  Șterge fișiere.
+  - ~rm -r DIRECTOR~  
+    Șterge recursiv un director.
+  - ~rm -rf DIRECTOR~  
+    Forțează ștergerea.
+
+- ~less FIȘIER~  
+  Afișează conținutul unui fișier mare.
+  
+- ~more FIȘIER~  
+  Afișează conținutul unui fișier mari.
+
+- ~man COMANDĂ/BIBLIOTECĂ~  
+  Afișează manualul unei comenzi sau biblioteci.
+
+- ~which COMANDĂ~  
+  Afișează calea către binarul unei comenzi.
+
+
+* Comenzi mai puțin uzuale
+
+- ~df~  
+  Raportează spațiul de stocare pe disc.
+
+- ~du~  
+  Afișează dimensiunea fișierelor/directoarelor.
+  - ~du -h~  
+    Dimensiunea human-readable.
+
+- ~fastfetch~  
+  Afișează informații despre sistem (alternativă modernă la neofetch).
+  - ~neofetch~ --- Deprecated  
+  - ~pfetch~ --- Variantă minimală  
+  - ~screenfetch~ --- Variantă cu screenshot  
+  - ~hyfetch~ --- Variantă cu flag-uri LBGT+
+  [[./Pictures/fastfetch.png]]
+
+- ~htop~  
+  Utilitar pentru monitorizarea proceselor, CPU și memorie.
+  - ~top~ --- Variantă clasică, built-in, dificilă de înțeles.
+  - ~btop~ --- htop, dar cu steroizi în UI.
+
+- ~uname -a~  
+  Afișează informații despre kernel și sistem.
+
+- ~free -h~  
+  Afișează memoria RAM folosită și liberă.

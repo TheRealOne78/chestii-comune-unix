@@ -1,21 +1,7 @@
 #+title: Chestii comune în Unix
 
-* Test 1
+Salut. Acest repo este o documentație destinată colegilor mei care au nevoie să învețe cum să folosească un terminal virtual pentru a interacționa cu un sistem ca-unix.
 
-#+include: ceva.org
+Drept urmare, acest repo va fi scris numai în limba Română.
 
-#+BEGIN_SRC c
-int main() {
-
-    return 0;
-}
-#+END_SRC
-
-* Pic
-[[./Untitled.png]]
-
-* Link
-https://makefiletutorial.com/
-
-** idk
-~cod~
+Toată documentația este licențiată sub termenii [[https://creativecommons.org/licenses/by-sa/4.0/deed.enCreative][Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)]].
