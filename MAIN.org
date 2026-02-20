@@ -1,0 +1,11 @@
+#+AUTHOR: BAJCSI Elias-Robert
+#+DATE:   2026-02-20 Fri
+
+#+INCLUDE: .config.org
+
+#+INCLUDE: README.org
+#+INCLUDE: src/comenzi.org 
+#+INCLUDE: src/pachete.org 
+#+INCLUDE: src/editoare.org 
+#+INCLUDE: src/compilare.org 
+#+INCLUDE: src/depanare.org

@@ -1,7 +1,8 @@
-#+title: Chestii comune în Unix
+#+TITLE: Chestii comune în Unix
 
+* Introducere + Legal
 Salut. Acest repo este o documentație destinată colegilor mei care au nevoie să învețe cum să folosească un terminal virtual pentru a interacționa cu un sistem ca-unix.
 
 Drept urmare, acest repo va fi scris numai în limba Română.
 
-Toată documentația este licențiată sub termenii [[https://creativecommons.org/licenses/by-sa/4.0/deed.enCreative][Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)]].
+Toată documentația este licențiată sub termenii [[https://creativecommons.org/licenses/by-sa/4.0/deed.enCreative][Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)]].

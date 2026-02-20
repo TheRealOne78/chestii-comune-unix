@@ -1,0 +1,222 @@
+* Instalarea de programe (pachete)
+În distribuțiile de GNU/Linux precum și alte distribuții ca-unix, standardul de instalare de software este diferit față de Microsoft Windows.  Dacă ai folosit MS Windows toată viața ta și acum faci switch pe o distribuție de GNU/Linux, te-ai gândi că pentru a instala un program, mai întâi este necesar să descarci un setup/installer de pe un site.
+
+Deși din păcate acest lucru este încă este cazul în câteva cazuri, acest lucru nu mai este standard din 2 mari motive:
+1. Este complicat:
+   - Trebuie să te duci pe site-ul oficial să descarci un setup
+   - Apoi să daci click pe el
+   - Apoi să dai click pe butoanele de install
+   - Între timp mai sunt și reclame șau sponsorizări de antiviruși si etc la care dacă nu debifezi atunci se instalează în sistemul tău
+   - Durează destul de mult
+   - Iar la final trebuie să ștergi installer-ul pe care l-ai descărcat ca să nu ocupi prea mult spațiu (Spoiler alert: extrem de puține persoane fac asta)
+2. Este nesigur:
+   - Există posibilitatea să te duci pe alt site și să descarci un malware, sau să îți iei mare phishing direct de pe site, etc
+   - Există posibilitatea ca un atac cibernetic să se întâmple, fișierul pe care îl descarci să fie înlocuit cu malware, iar tu să nu îi verifici checksum-ul pe care îl descarci să fie înlocuit cu malware, iar tu să nu îi verifici checksum-ul.
+
+Din acest motiv, aproape toate distribuțiile de *Linux și BSD care se respectă au un manager de pachete! Acesta este responsabil cu descărcarea, verificarea, instalarea, actualizarea și dezinstalarea automată a pachetelor și dependențelor lor, totul în doar câteva cuvinte pe terminal. Există de asemenea și interfețe grafice, însă este în afara scopului acestui document.
+
+Acestea funcționează pe principiul că fiecare sistem are o mică bază de date cu toate pachetele disponibile, la care au versiuni, liste de dependențe, descrieri, autori, URL-uri către pachetul de descărcat, etc.
+
+Deși fiecare distribuție este diferită în felul ei, managerele de pachete sunt cât de cât standardizate:
+
+** Aptitute (~apt~ / ~apt-get~)
+Acesta este managerul de pachete oficial făcut de Debian.
+
+Exemple distribuții GNU/Linux includ [[https://www.debian.org][Debian]], [[https://linuxmint.com/][Mint]], [[https://ubuntu.com/desktop][Ubuntu]], [[https://uwuntuos.site/][UwUntu]], [[https://termux.dev/en/][Termux]] pentru Android etc.
+  
+*** Comenzi
+
+Notă: /~apt~ are nevoie de permisiuni privelegiate, așadar se scrie ~sudo~ sau ~doas~ (după caz) înainte de ~apt~, [[https://en.wikipedia.org/wiki/Rooting_(Android)][cu excepția la Termux fără root]]./
+
+Notă 2: /În loc de ~apt~ se mai poate folosi și ~apt-get~. Ambele sunt lafel./
+
+- Actualizare informații despre pachete: ~sudo apt update~
+  
+  Această comandă este folosită pentru a actualiza lista de pachete disponibile de instalat și actualizat. Acesta nu actualizează sistemul, însă este necesar a fi rulat înainte dacă se dorește actualizarea întregului sistem. Se mai folosește de asemenea dacă se dorește instalarea unui pachet neinstalat înainte, cu cel mai noi pachet. 
+  
+- Instalare: ~sudo apt install <package_name1> [package_name2 ...]~
+  
+- Actualizare toate pachetele din sistem: ~sudo apt upgrade~
+  
+  Această comandă este folosită pentru a actualiza toate pachetele instalate în sistem. Dacă baza de date nu este actualizată înainte, acesta va instala doar versiunile cele mai noi din baza de date curentă.
+  
+- Dezinstalare pachet ~sudo apt remove <package_name1> [package_name2 ...]~
+  
+- Dezinstalare pachete cu dependențele asociate ~sudo apt purge <package_name1> [package_name2 ...]~
+  
+- Ștergere cache ~sudo apt autoclean~
+  
+- Ștergere pachete orfane ~sudo apt autoremove~
+  
+- Ștergere pachete orfane ~sudo apt autoremove~
+
+** Fedora (dnf)
+Acesta este managerul de pachete oficial pentru Fedora.
+
+Exemple distribuții GNU/Linux includ [[https://fedoraproject.org/][Fedora]], [[https://getfedora.org/en/workstation/][Fedora Workstation]], [[https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux][RHEL]], [[https://www.centos.org/][CentOS Stream]].
+
+*** Comenzi
+
+Notă: /~dnf~ are nevoie de permisiuni privilegiate, așadar se scrie ~sudo~ sau ~doas~ (după caz) înainte de ~dnf~./
+
+Notă 2: /În unele sisteme mai vechi sau diferite se folosește ~yum~ și ~rpm~, dar ~dnf~ este standardul actual./
+
+- Actualizare informații despre pachete: ~sudo dnf check-update~
+
+  Actualizează lista de pachete disponibile din repo-uri. Nu modifică sistemul.
+
+- Instalare: ~sudo dnf install <package_name1> [package_name2 ...]~
+
+- Actualizare toate pachetele din sistem: ~sudo dnf upgrade~
+
+  Actualizează toate pachetele instalate la cele mai noi versiuni disponibile.
+
+- Dezinstalare pachet: ~sudo dnf remove <package_name1> [package_name2 ...]~
+
+- Ștergere cache: ~sudo dnf clean all~
+
+- Ștergere dependențe nefolosite: ~sudo dnf autoremove~
+
+
+
+** Arch Linux (~pacman~ + AUR helpers)
+Managerul de pachete oficial este ~pacman~.  
+
+Pentru AUR se folosesc AUR helpere neoficiale (ex: ~paru~, ~yay~).
+
+Exemple distribuții GNU/Linux includ [[https://archlinux.org/][Arch Linux]], [[https://manjaro.org/][Manjaro]], [[https://endeavouros.com/][EndeavourOS]].
+
+*** Comenzi (~pacman~)
+
+Notă: /~pacman~ are nevoie de permisiuni privilegiate pentru instalare/ștergere./
+
+- Actualizare informații despre pachete + sistem: ~sudo pacman -Syu~
+
+  Sincronizează baza de date și actualizează toate pachetele.
+
+- Instalare: ~sudo pacman -S <package_name1> [package_name2 ...]~
+
+- Dezinstalare pachet: ~sudo pacman -R <package_name1> [package_name2 ...]~
+
+- Dezinstalare pachet + dependențe nefolosite: ~sudo pacman -Rs <package_name1>~
+
+- Ștergere cache: ~sudo pacman -Sc~
+
+- Ștergere cache complet: ~sudo pacman -Scc~
+
+*** Comenzi (AUR helpers: ~yay~ / ~paru~)
+
+Notă: /~yay~ și ~paru~ sunt unelte neoficiale pentru AUR./
+
+Notă 2: /Este necesar să fie instalate manual, deoarece nu sunt în repo-urile oficiale Arch./
+
+Notă 3: /~yay~ și ~paru~ folosesc ~sudo~ (sau configurabil ~doas~) automat. Nu se scrie ~sudo~ sau ~doas~ înaintea lor din motive de securitate./
+
+- Instalare yay:
+
+  Notă: /Necesită pachetul ~base-devel~ și ~git~ instalate în prealabil./
+
+  #+BEGIN_SRC shell
+  sudo pacman -S --needed base-devel git
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+  #+END_SRC
+
+- Instalare paru:
+
+  Notă: /Necesită pachetul ~base-devel~ și ~git~ instalate în prealabil./
+
+  #+BEGIN_SRC shell
+  sudo pacman -S --needed base-devel git
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si
+  #+END_SRC
+
+- Instalare pachet din AUR: ~yay -S <package_name>~ / ~paru -S <package_name>~
+
+- Actualizare sistem + AUR: ~yay -Syu~ / ~paru -Syu~
+
+- Dezinstalare pachet: ~yay -R <package_name>~ / ~paru -R <package_name>~
+  
+
+
+** Portage (~emerge~)
+[[https://www.gentoo.org/][Gentoo]] folosește Portage, managerul de pachete bazat pe surse. Acesta se ocupă de compilarea pachetelor, cu excepția programelor interpretabile, pre-compilate sau ne-executabile.
+
+*** Comenzi
+
+Notă: /~emerge~ are nevoie de permisiuni privilegiate./
+
+- Actualizare tree Portage: ~sudo emerge --sync~
+
+  Actualizează lista de pachete disponibile (echivalent cu update la baze de date).
+
+- Instalare: ~sudo emerge <package_name1> [package_name2 ...]~
+
+- Actualizare sistem: ~sudo emerge -avuDN @world~
+
+  Actualizează toate pachetele din sistem, respectând USE flags și dependențe.
+
+- Dezinstalare pachet: ~sudo emerge --deselect <package_name>~
+
+- Curățare pachete nefolosite: ~sudo emerge --depclean~
+
+- Curățare fișiere temporare: ~sudo eclean distfiles~
+
+
+** FreeBSD (~pkg~)
+[[https://www.freebsd.org/][FreeBSD]] folosește ~pkg~ ca manager de pachete binare.
+
+*** Comenzi
+
+Notă: /~pkg~ are nevoie de permisiuni privilegiate./
+
+- Actualizare informații despre pachete: ~sudo pkg update~
+
+- Instalare: ~sudo pkg install <package_name1> [package_name2 ...]~
+
+- Actualizare toate pachetele: ~sudo pkg upgrade~
+
+- Dezinstalare pachet: ~sudo pkg delete <package_name1> [package_name2 ...]~
+
+- Ștergere pachete nefolosite: ~sudo pkg autoremove~
+
+- Curățare cache: ~sudo pkg clean~
+
+
+
+** OpenBSD (~pkg_add~ / ~pkg_delete~)
+[[https://www.openbsd.org/][OpenBSD]] are un sistem simplu de gestionare a pachetelor.
+
+*** Comenzi
+
+Notă: /Comenzile au nevoie de permisiuni privilegiate./
+
+- Actualizare lista de pachete: ~doas pkg_add -u~  
+
+- Instalare: ~doas pkg_add <package_name1> [package_name2 ...]~
+
+- Actualizare toate pachetele: ~doas pkg_add -u~
+
+- Dezinstalare pachet: ~doas pkg_delete <package_name1> [package_name2 ...]~
+
+
+
+** NetBSD (~pkgin~ / ~pkg_add~)
+[[https://www.netbsd.org/][NetBSD]] poate folosi ~pkgin~ (frontend modern) sau ~pkg_add~.
+
+*** Comenzi (pkgin)
+
+Notă: /~pkgin~ este recomandat în loc de ~pkg_add~./
+
+- Actualizare informații despre pachete: ~sudo pkgin update~
+
+- Instalare: ~sudo pkgin install <package_name1> [package_name2 ...]~
+
+- Actualizare toate pachetele: ~sudo pkgin full-upgrade~
+
+- Dezinstalare pachet: ~sudo pkgin remove <package_name1> [package_name2 ...]~
+
+- Ștergere pachete nefolosite: ~sudo pkgin autoremove~

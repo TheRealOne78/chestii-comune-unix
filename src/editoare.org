@@ -1,0 +1,18 @@
+* Editoare de text
+** nano
+WIP
+
+** vi/vim/nvim
+WIP
+
+** ed - tHe sTanDArd teXt EdIToR ????
+- WIP
+- https://www.gnu.org/fun/jokes/ed.html
+- https://www.gnu.org/fun/jokes/ed-msg.html
+
+** Altele
+- VSCodium - FOSS
+- MS VSCode - Preferabil VSCodium
+- Sublime Text
+- Geany
+- Code::Blocks

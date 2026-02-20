@@ -1,0 +1,70 @@
+* Compilarea
+Compilarea în general este procesul în care transformi codul sursă al unui proiect într-un executabil, fie binar, fie bytecode interpretabil într-o mașină virtuală. 
+
+Compilarea propriu-zisă este procesul în care un program numit compilator, traduce codul sursă al unui proiect în cod de asamblare. Însă acest aspect este în afara scopului acestui document, așadar o să tratăm compilatorul pur și simplu ca un program care traduce codul sursă în ceva executabil.
+
+** Compilatoare pentru cod mașină nativ
+Acestea sunt compilatoarele care traduc codul sursă în cod mașină executabilă nativ de procesor și de sistemul de operare.
+
+Cele mai populare framework-uri de compilare sunt [[https://gcc.gnu.org/][GCC]], [[https://www.llvm.org/][LLVM]] și [[https://visualstudio.microsoft.com/vs/features/cplusplus/][MSVC]]. Deoarece am [[https://stallman.org/microsoft.html][o ură imensă față de Microsoft]], iar [[https://visualstudio.microsoft.com/vs/features/cplusplus/][MSVC]] oricum nu este standard pentru sistemele de operare non-Windows, nu o să-l tratăm în acest document.
+
+*** GCC - GNU Compiler Collection
+Este un framework de compilare dezvoltat de [[https://www.fsf.org/][Free Software Foundation]] pentru sistemul de operare [[https://www.gnu.org/][GNU]].
+
+Aceasta include un set de compilatoare oficiale, precum și compilatoare ne-oficiale, dezvoltate cu [[https://gcc.gnu.org/][GCC]]:
+- [[https://www.man7.org/linux/man-pages/man1/gcc.1.html][~gcc~]] --- Compilator pentru limbajul de programare [[https://www.c‑language.org/][C]]
+- [[https://www.man7.org/linux/man-pages/man1/g++.1.html][~g++~]] --- Compilator pentru limbajul de programare [[https://en.wikipedia.org/wiki/C%2B%2B][C++]]
+- [[https://www.man7.org/linux/man-pages/man1/gfortran.1.html][~gfortran~]] --- Compilator pentru limbajul de programare [[https://fortran‑lang.org/][Fortran]]
+- [[https://man.archlinux.org/man/gccgo.1.en][~gccgo~]] --- Compilator pentru limbajul de programare [[https://go.dev/][Go]]
+- [[https://gcc.gnu.org/onlinedocs/gcc/Objective-C.html][~gcc-objc~]] --- Compilator pentru limbajul de programare [[https://en.wikipedia.org/wiki/Objective-C][Objective-C]]
+- [[https://gcc.gnu.org/][~gcc-objc++~]] --- Compilator pentru [[https://en.wikipedia.org/wiki/Objective-C%2B%2B][Objective-C++]]
+- [[https://rust-gcc.github.io/][~gccrs~]] --- Compilator pentru limbajul de programare [[https://www.rust-lang.org/][Rust]] (variantă GCC) [instabil]
+- etc
+
+Pentru a compila unul sau mai multe fișiere C, se va folosi o comandă similară cu următoarea:
+~gcc FIȘIER1.c [FIȘIER2.c ...] [-o FIȘIER_DE_IEȘIRE]~, unde ~-o~ reprezintă un argument opțional cu numele fișierului de ieșire, adică executabilul. În cazul în care nu se va introduce ~-o~, atunci ~gcc~ va da afară fișierul executabil sub denumirea `a.out'.
+
+În cazul în care se va compila un fișier cu alt limbaj de programare, se va folosi numele compilatorului corect (de exemplu ~g++~ pentru C++).
+
+Alte flag-uri utile includ:
+- ~-g~ --- Include informații și simboluri de debug
+- ~-I/path/to/include/directory~ --- Include un director care să conțină headerele proiectului. Util dacă ții fișiere header (`.h' / `.hpp') altundeva.
+- ~-Wwarn~ --- Activează sau dezactivează diferite avertizări
+- ~-O~ --- Nivelul de optimizare (0, 1, 2, 3, s, fast, g, z)
+- ~-Dmacro~ --- Definire de macro-comenzi de pre-procesare (~#define~)
+- ~-std=STANDARD~ --- Definirea standardului de limbaj folosit la compilare (ex. C99 -- C 1999)
+
+Aceasta nu este o listă exhaustivă. Te poți documenta mai departe pe manualul compilatorului cu ~man COMPILATOR~.
+
+*** LLVM
+LLVM este un framework modular de compilare și optimizare dezvoltat inițial de [[https://llvm.org/][LLVM Project]].
+
+Front-end-uri și compilatoare populare:
+- [[https://clang.llvm.org/][~clang~]] --- Compilator pentru limbajul de programare [[https://www.c‑language.org/][C]]
+- [[https://clang.llvm.org/][~clang++~]] --- Compilator pentru limbajul de programare [[https://en.wikipedia.org/wiki/C%2B%2B][C++]]
+- [[https://clang.llvm.org/][~clang-objc~]] --- Compilator pentru limbajul de programare [[https://en.wikipedia.org/wiki/Objective-C][Objective-C]]
+- [[https://clang.llvm.org/][~clang-objc++~]] --- Compilator pentru [[https://en.wikipedia.org/wiki/Objective-C%2B%2B][Objective-C++]]
+- [[https://clang.llvm.org/][~clang-cuda~]] --- Compilator pentru [[https://developer.nvidia.com/cuda/][CUDA]]
+- [[https://rust-lang.org/tools/rustc][~rustc~]] --- Compilator pentru limbajul de programare [[https://www.rust-lang.org/][Rust]]
+- etc
+
+Exemplu de compilare C cu LLVM:
+~clang FIȘIER1.c [FIȘIER2.c ...] [-o FIȘIER_DE_IEȘIRE]~, unde ~-o~ reprezintă un argument opțional cu numele fișierului de ieșire, adică executabilul. În cazul în care nu se va introduce ~-o~, atunci ~clang~ va da afară fișierul executabil sub denumirea `a.out'.
+
+Alte flag-uri utile includ:
+- ~-g~ --- Include informații și simboluri de debug
+- ~-I/path/to/include/directory~ --- Include un director care să conțină headerele proiectului. Util dacă ții fișiere header (`.h' / `.hpp') altundeva.
+- ~-Wwarn~ --- Activează sau dezactivează diferite avertizări
+- ~-O~ --- Nivelul de optimizare (0, 1, 2, 3, s, fast, g, z)
+- ~-Dmacro~ --- Definire de macro-comenzi de pre-procesare (~#define~)
+- ~-std=STANDARD~ --- Definirea standardului de limbaj folosit la compilare (ex. C99 -- C 1999)
+
+Aceasta nu este o listă exhaustivă. Te poți documenta mai departe pe manualul compilatorului cu ~man COMPILATOR~.
+
+*** Compilatoare pentru bytecode interpretabil
+Aceste compilatoare transformă codul sursă într-un format intermediar, interpretabil de o mașină virtuală (VM) sau runtime specific.
+
+- [[https://openjdk.org/][~javac~]] --- Compilator pentru Java, generează bytecode pentru [[https://en.wikipedia.org/wiki/Java_virtual_machine][JVM]]
+- [[https://www.python.org][~python -m py_compile~]] --- Compilează fișiere Python în bytecode (.pyc)
+- [[https://www.ruby-lang.org/en][~ruby -c~]] --- Verifică și generează bytecode Ruby
+- etc

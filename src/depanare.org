@@ -1,0 +1,20 @@
+* GDB - GNU Debugger
+[[https://www.gnu.org/software/gdb/][GDB]] este debugger-ul oficial GNU, folosit pentru a inspecta programe native, a seta breakpoints, a urmări variabile și a analiza execuția codului.
+
+Executabilul principal este [[https://www.gnu.org/software/gdb/][~gdb~]] --- Debugger pentru programe compilate nativ (C, C++, Rust, etc.).
+
+Pentru a vedea simbolurile (codul sursă, denumiri variabile, etc.), fișierul la care se va face debugging va fi neapărat compilat cu flag-ul ~-g~. În caz contrar, vor apărea numai coduri numerice greu sau chiar imposibil de înțeles.
+
+Exemple de bază:
+- ~gdb ./program~ --- Pornește GDB pentru programul executabil `program'.
+- În interiorul GDB:
+  - ~layout src~ --- Setează un layout pentru a vedea codul sursă.
+  - `RETURN' (`Enter') --- Execută ultima comandă
+  - ~break FUNCTION_NAME~ --- Setează un breakpoint în funcția ~FUNCTION_NAME~.
+  - ~break LINE_NUMBER~ --- Setează un breakpoint la linia ~LINE_NUMBER~.
+  - ~run~ --- Pornește execuția programului.
+  - ~next~ / ~step~ --- Execută linia curentă, trecând peste sau intrând în funcții.
+  - ~print VARIABLE~ --- Afișează valoarea unei variabile.
+  - ~continue~ --- Continuă execuția până la următorul breakpoint.
+    
+De asemenea, multe IDE-uri integrează depanarea cu [[https://www.gnu.org/software/gdb/][GDB]].

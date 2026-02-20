@@ -1,12 +1,11 @@
 * Comenzi uzuale
-
 - ~ls [LOCAȚIE]~ --- LiSt  
   Listează fișierele dintr-o anumită locație. Dacă locația nu este dată, listează fișierele din directorul curent.
   - ~-a~ --- All (include fișierele ascunse)
   - ~-l~ --- Long (listare detaliată)
   - ~-s~ --- Size (afișează dimensiunea fișierelor)
 
-- ~pwd~ --- Print Working Directory  
+- [[https://man7.org/linux/man-pages/man1/pwd.1.html][~pwd~]] --- Print Working Directory  
   Afișează locația (directorul) curent(ă).
 
 - ~cd [TARGET]~ / ~chdir [TARGET]~  
@@ -22,14 +21,14 @@
   - ~cat > FIȘIER~  
     Citește din [[https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)][stdin]] și scrie în FIȘIER.
 
-- ~echo~  
+- [[https://man7.org/linux/man-pages/man1/echo.1.html][~echo~]]  
   Printează text cu newline.
   - ~echo "Hello world!"~  
     Printează `Hello world\n` în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
   - ~echo "Hello world!" > FIȘIER~  
     Printează `Hello world\n` în FIȘIER.
 
-- ~printf~  
+- [[https://man7.org/linux/man-pages/man1/printf.1.html][~printf~]]  
   Printează text fără newline implicit.
   - ~printf "Hello world"~  
     Printează `Hello world` fără newline în [[https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)][stdout]].
@@ -74,32 +73,30 @@
 - ~which COMANDĂ~  
   Afișează calea către binarul unei comenzi.
 
-
 * Comenzi mai puțin uzuale
 
-- ~df~  
+- [[https://man7.org/linux/man-pages/man1/df.1.html][~df~]]  
   Raportează spațiul de stocare pe disc.
 
-- ~du~  
+- [[https://man7.org/linux/man-pages/man1/du.1.html][~du~]]  
   Afișează dimensiunea fișierelor/directoarelor.
   - ~du -h~  
     Dimensiunea human-readable.
 
-- ~fastfetch~  
+- [[https://github.com/LinusDierks/fastfetch][~fastfetch~]]  
   Afișează informații despre sistem (alternativă modernă la neofetch).
-  - ~neofetch~ --- Deprecated: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
-  - ~pfetch~ --- Variantă minimală, DEPRECATED: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
-  - ~screenfetch~ --- Variantă cu screenshot  
-  - ~hyfetch~ --- Variantă cu flag-uri LBGT+
+  - +[[https://github.com/dylanaraps/neofetch][~neofetch~]]+ --- \textcolor{red}{DEPRECATED}: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
+  - +[[https://github.com/dylanaraps/pfetch][~pfetch~]]+ --- Variantă minimală a [[https://github.com/dylanaraps/neofetch][neofetch]], scrisă în POSIX shell. \textcolor{red}{DEPRECATED}: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
+  - [[https://github.com/KittyKatt/screenFetch][~screenfetch~]] --- Variantă cu screenshot  
+  - [[https://github.com/hykilpikonna/hyfetch][~hyfetch~]] --- Variantă cu flag-uri LBGT+
+  #+CAPTION: [[https://github.com/fastfetch-cli/fastfetch][~fastfetch~]] cu o imagine [[https://en.wikipedia.org/wiki/Sixel][sixel]] în acțiune. I use [[https://artixlinux.org/][Artix]] btw :3
+  #+LABEL: fig:fastfetch
   [[./Pictures/fastfetch.png]]
 
-- ~htop~  
-  Utilitar pentru monitorizarea proceselor, CPU și memorie.
-  - ~top~ --- Variantă clasică, built-in, dificilă de înțeles.
-  - ~btop~ --- htop, dar cu steroizi în UI.
+- [[https://htop.dev/][~htop~]] --- Utilitar pentru monitorizarea proceselor, CPU și memorie.
+  - [[https://linux.die.net/man/1/top][~top~]] --- Variantă clasică, built-in, dificilă de înțeles.
+  - [[https://github.com/aristocratos/btop][~btop~]] --- [[https://htop.dev/][~htop~]], dar cu steroizi în UI.
 
-- ~uname -a~  
-  Afișează informații despre kernel și sistem.
+- ~uname -a~ --- Afișează informații despre kernel și sistem.
 
-- ~free -h~  
-  Afișează memoria RAM folosită și liberă.
+- ~free -h~ --- Afișează memoria RAM folosită și liberă.
