@@ -87,8 +87,8 @@
 
 - ~fastfetch~  
   Afișează informații despre sistem (alternativă modernă la neofetch).
-  - ~neofetch~ --- Deprecated  
-  - ~pfetch~ --- Variantă minimală  
+  - ~neofetch~ --- Deprecated: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
+  - ~pfetch~ --- Variantă minimală, DEPRECATED: [[https://dylan.gr/1768295794][Autorul a devenit fermier și a lăsat viața de programator]] 
   - ~screenfetch~ --- Variantă cu screenshot  
   - ~hyfetch~ --- Variantă cu flag-uri LBGT+
   [[./Pictures/fastfetch.png]]
