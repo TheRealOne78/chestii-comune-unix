@@ -1,0 +1,21 @@
+#+title: Chestii comune în Unix
+
+* Test 1
+
+#+include: ceva.org
+
+#+BEGIN_SRC c
+int main() {
+
+    return 0;
+}
+#+END_SRC
+
+* Pic
+[[./Untitled.png]]
+
+* Link
+https://makefiletutorial.com/
+
+** idk
+~cod~
