@@ -1,5 +1,7 @@
 #+TITLE: Chestii comune în Unix
 
+URI canonic pentru release: https://github.com/TheRealOne78/chestii-comune-unix/releases
+
 * Introducere + Legal
 Salut. Acest repo este o documentație destinată colegilor mei care au nevoie să învețe cum să folosească un terminal virtual pentru a interacționa cu un sistem ca-unix.
 
