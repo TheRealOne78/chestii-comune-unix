@@ -1,9 +1,118 @@
 * Editoare de text
 ** nano
-WIP
+Nano este un editor de text [[https://en.wikipedia.org/wiki/WYSIWYG][WYSIWYG]] (What You See Is What You Get).
+
+1. Primul pas la folosirea corectă și etică a editorului nano este dezinstalarea lui.
+2. Al doilea pas este instalarea unui editor de text real.
+
+Felicitări! Ai folosit corect nano.
+
+Nu, serios acum. Nano nu este un editor bun. Singurul motiv pentru care Nano există în sistemul tău, este ca administratorii de sistem să facă configurări rapide la un sistem nou, de la distanță. 
+
+Folosirea lui la orice altceva este extrem de grea, deoarece movement-ul dificil (nici măcar nu ai suport pentru cursorul de mouse), iar funcționalitățile care există sunt limitate.
+
+Până și MS Notepad este mai eficient decât nano.
+
+Dacă chiar vrei să îți faci viața un chin și să folosești nano, documentează-te cu ~man nano~.
 
 ** vi/vim/nvim
-WIP
+Vi, Vim (Vi IMproved) și NeoVim (~nvim~) sunt niște editoare de text extensibile, cu foarte multe funcționalități ascunse, însă foarte utile.
+
+Învățarea folosirii acestui editor este destul de grea, însă extrem de utilă. Atât de utilă, încât multe persoane care sunt nevoite să folosească VSCode la locul de muncă, instalează o extensie pe VSCodium/VSCode pentru keybinding-urile de vi/vim.
+
+Editorul în sine este proiectat pentru a fi folosit într-un terminal. Deși există și varianta grafică, ea este practic tot un terminal pus într-un program grafic, și ai fi animal să folosești GVim.
+
+Totuși, pentru Vim, este *absolut recomandată* instalarea GVim, pentru a aduce suport de clipboard de sistem și în versiunea de terminal.
+
+Notă: /De acum înainte, voi folosi termenul "Vim" pentru toate cele 3 editoare./
+
+/Fun fact: Dacă scrii pe google.com (varianta în engleză internațională) "vim", acesta va da "Did you mean: Emacs", iar dacă scrii "Emacs", atunci îți va da "Did you mean: Vim", formând un ciclu infinit./
+
+*** Tutorial
+Vim este un editor de text modal (nu WYSIWYG), așadar nu există butoane în față, sau comenzi uzuale.
+
+Un editor de text modal este practic un editor de text care rulează în mai multe moduri.
+
+Vim în sine are în total 4 moduri principale:
+- NORMAL
+- INSERARE
+- COMANDĂ
+- VIZUAL
+
+Explicăm imediat ce înseamnă.
+
+**** Scrierea în editor
+1. Pentru a intra în modul de INSERARE, mai întâi trebuie să fii în modul NORMAL. Atunci când deschizi Vim, automat intri în modul NORMAL.
+2. Apoi apeși tasta 'i'. Acest lucru ar trebui să te ducă în modul de INSERARE, iar pentru a confirma acest lucru, în colțul din JOS-STÂNGA are trebui să îți apară ~-- INSERT --~.
+   
+Acum poți scrie lucruri, ca în orice editor.
+
+**** Închiderea editorului
+Cel mai meme-at lucru despre Vim este faptul că utilizatorii nu știu cum să închidă editorul.
+
+1. În primul rând trebuie să intri înapoi în modul NORMAL. Probabil că ești încă în modul de INSERARE. Pentru a intra în modul NORMAL, apasă odată pe ~ESC~. Pentru a confirma, nu ar mai trebui să ai ~-- INSERT --~ în colțul de JOS-STÂNGA.
+2. Trebuie să intri în modul de COMANDĂ. În timp ce ești în modul NORMAL, scrie apasă ~:~ odată. Acum ar trebui să ai ~:~ în colțul de JOS-STÂNGA. Felicitări! ești în modul de COMANDĂ.
+3. Exită cam 3 posibile variante de ieșire:
+   1. Ieșire simplă: ~q~ (Quit)
+   2. Ieșire cu salvare a fișierului: ~wq~ (Write-Quit)
+   3. Ieșire forțată, fără salvare: ~q!~ (Quit abort)
+      
+**** Salvarea unui fișier
+În modul NORMAL scrie
+1. ~:w~ --- Salvează fișierul curent
+2. ~:w fișier.txt~ --- Salvează un fișier cu numele 'fișier.txt' (numele poate fi orice) în directorul curent
+2. ~:w cale/la/fișier.txt~ --- Salvează un fișier cu numele 'fișier.txt', la o anumită cale (poate fi orice)
+3. ~:w!~ --- Suprascrie fișierul - util dacă ai deschis un fișier fără permisiunile necesare.
+      
+**** Deschidere fișier
+În terminal, putem deschide un fișier --- chiar și inexistent --- cu ~vim NUMEFISIER~.
+
+Presupunem că ai deschis deja Vim, fără un fișier, sau te-ai răzgandit din editat un fișier și vrei să îl deschizi pe altul, direct din Vim.
+
+În modul NORMAL scrie
+1. ~:o fișier.txt~ --- Deschide fișier.txt din directorul curent
+2. ~:o cale/la/fișier.txt~ --- Deschide fișier.txt, la o anumită cale
+
+**** Chestiuni mai avansate Până acum am acoperit cam tot ce trebuie pentru a face Vim folositor. Însă am atins doar o bucățică din vârful iceberg-ului. Vim este un editor foarte avansat.
+
+***** Selectare text --- Modul VIZUAL
+Acest mod este util pentru a selecta text. Motivul pentru care am vrea să selectăm text, este pentru a îl tăia, copia, clona, aplica un pattern de căutare sau substituire prin expresii regulate (RegEx), etc.
+
+1. Pentru a intra în modul vizual, trebuie să fim în modul NORMAL. Observă faptul că modul NORMAL este părintele la modul INSERT, COMMAND și VISUAL.
+2. Apoi folosim ori caracterul ~v~ mic pentru a selecta caractere, ~SHIFT v~ (~V~ mare) pentru a selecta linii, sau ~CTRL+v~ pentru a selecta blocuri.
+3. Acum ar trebui să fii în modul vizual, și poți confirma asta dacă scrie ~-- VISUAL --~ în colț.
+   
+***** Ștergere text
+Pentru a șterge text, putem șterge cu BACKSPACE în modul INSERT.
+
+1. În modul NORMAL, putem șterge caractere cu ~x~ sau ~D~ (D mare / ~SHIFT+d~).
+2. Tot în modul NORMAL, putem șterge linii cu ~dd~. Caracterele dublE nu sunt o greșeală.
+3. În modul VISUAL, putem să selectăm text, și să îl ștergem cu ~d~.
+
+În cazurile numerotate, conținutul șters este automat stocat în clipboard.
+
+***** Copiere text
+Copiere în engleză se mai numește (y)ank.
+
+- Pentru a copia o linie în modul NORMAL, ~yy~.
+- Pentru a copia mai multe linii, în modul NORMAL, ~y<nr_linii>y~
+- Pentru a copia ceva selectat, în modul VISUAL, ~y~
+
+***** lowercase și UPPERCASE automat
+Se selectează în modul VISUAL textul dorit a fi procesat.
+- Lowercase: ~u~
+- Lowercase: ~U~ (U mare / ~SHIFT+u~)
+
+*** vi
+Vi este prima variantă a acestui tip de editor inițial lansată în 1976. Nu este deloc intuitivă folosirea lui.
+
+Este recomandată folosirea unei versiuni mai noi, precum Vim ori NeoVim.
+
+*** vim
+Vi IMproved este varianta îmbunătățită a vi, inițial lansată în 1992, și încă menținută.
+
+*** nvim
+NeoVim este varianta și mai îmbunătățită a Vim, însă dacă nu ești un utilizator expert care dorește să customizeze editorul, atunci Vim este echivalent de bun.
 
 ** ed - tHe sTanDArd teXt EdIToR ????
 - WIP
