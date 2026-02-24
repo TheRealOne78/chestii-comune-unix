@@ -11,7 +11,7 @@ Deși din păcate acest lucru este încă este cazul în câteva cazuri, acest l
    - Iar la final trebuie să ștergi installer-ul pe care l-ai descărcat ca să nu ocupi prea mult spațiu (Spoiler alert: extrem de puține persoane fac asta)
 2. Este nesigur:
    - Există posibilitatea să te duci pe alt site și să descarci un malware, sau să îți iei mare phishing direct de pe site, etc
-   - Există posibilitatea ca un atac cibernetic să se întâmple, fișierul pe care îl descarci să fie înlocuit cu malware, iar tu să nu îi verifici checksum-ul pe care îl descarci să fie înlocuit cu malware, iar tu să nu îi verifici checksum-ul.
+   - Există posibilitatea ca un atac cibernetic să se întâmple, fișierul pe care îl descarci să fie înlocuit cu malware, iar tu să nu îi verifici checksum-ul (ceea ce 99.99% din lume nici măcar nu cunoaște ce înseamnă).
 
 Din acest motiv, aproape toate distribuțiile de *Linux și BSD care se respectă au un manager de pachete! Acesta este responsabil cu descărcarea, verificarea, instalarea, actualizarea și dezinstalarea automată a pachetelor și dependențelor lor, totul în doar câteva cuvinte pe terminal. Există de asemenea și interfețe grafice, însă este în afara scopului acestui document.
 

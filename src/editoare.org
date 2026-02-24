@@ -9,7 +9,7 @@ Felicitări! Ai folosit corect nano.
 
 Nu, serios acum. Nano nu este un editor bun. Singurul motiv pentru care Nano există în sistemul tău, este ca administratorii de sistem să facă configurări rapide la un sistem nou, de la distanță. 
 
-Folosirea lui la orice altceva este extrem de grea, deoarece movement-ul dificil (nici măcar nu ai suport pentru cursorul de mouse), iar funcționalitățile care există sunt limitate.
+Folosirea lui la orice altceva este extrem de grea, deoarece movement-ul este dificil (nici măcar nu ai suport pentru cursorul de mouse), iar funcționalitățile care există sunt limitate.
 
 Până și MS Notepad este mai eficient decât nano.
 
@@ -28,8 +28,19 @@ Notă: /De acum înainte, voi folosi termenul "Vim" pentru toate cele 3 editoare
 
 /Fun fact: Dacă scrii pe google.com (varianta în engleză internațională) "vim", acesta va da "Did you mean: Emacs", iar dacă scrii "Emacs", atunci îți va da "Did you mean: Vim", formând un ciclu infinit./
 
+*** vi
+[[https://ex-vi.sourceforge.net/][Vi]] este prima variantă a acestui tip de editor inițial lansată în 1976. Nu este deloc intuitivă folosirea lui.
+
+Este recomandată folosirea unei versiuni mai noi, precum Vim ori NeoVim.
+
+*** vim
+[[https://www.vim.org/][Vi IMproved]] este varianta îmbunătățită a vi, inițial lansată în 1992, și încă menținută.
+
+*** nvim
+[[https://neovim.io/][NeoVim]] este varianta și mai îmbunătățită a Vim, însă dacă nu ești un utilizator expert care dorește să customizeze editorul, atunci Vim este echivalent de bun.
+
 *** Tutorial
-Vim este un editor de text modal (nu WYSIWYG), așadar nu există butoane în față, sau comenzi uzuale.
+Vim este un [[https://en.wikipedia.org/wiki/Mode_(user_interface)][editor de text modal]] (nu [[https://en.wikipedia.org/wiki/WYSIWYG][WYSIWYG]]), așadar nu există butoane în față, sau comenzi uzuale.
 
 Un editor de text modal este practic un editor de text care rulează în mai multe moduri.
 
@@ -72,8 +83,18 @@ Presupunem că ai deschis deja Vim, fără un fișier, sau te-ai răzgandit din 
 În modul NORMAL scrie
 1. ~:o fișier.txt~ --- Deschide fișier.txt din directorul curent
 2. ~:o cale/la/fișier.txt~ --- Deschide fișier.txt, la o anumită cale
+   
+**** Undo
+În modul NORMAL, ~u~
 
-**** Chestiuni mai avansate Până acum am acoperit cam tot ce trebuie pentru a face Vim folositor. Însă am atins doar o bucățică din vârful iceberg-ului. Vim este un editor foarte avansat.
+**** Redo
+În modul NORMAL, ~CTRL+r~
+
+**** Chestiuni mai avansate
+
+Până acum am acoperit cam tot ce trebuie pentru a face Vim folositor. Însă am atins doar o bucățică din vârful iceberg-ului. Vim este un editor foarte avansat.
+
+Poți vedea un cheatsheet pentru vim și pe https://vim.rtorr.com/
 
 ***** Selectare text --- Modul VIZUAL
 Acest mod este util pentru a selecta text. Motivul pentru care am vrea să selectăm text, este pentru a îl tăia, copia, clona, aplica un pattern de căutare sau substituire prin expresii regulate (RegEx), etc.
@@ -86,7 +107,7 @@ Acest mod este util pentru a selecta text. Motivul pentru care am vrea să selec
 Pentru a șterge text, putem șterge cu BACKSPACE în modul INSERT.
 
 1. În modul NORMAL, putem șterge caractere cu ~x~ sau ~D~ (D mare / ~SHIFT+d~).
-2. Tot în modul NORMAL, putem șterge linii cu ~dd~. Caracterele dublE nu sunt o greșeală.
+2. Tot în modul NORMAL, putem șterge linii cu ~dd~. Caracterele duble nu sunt o greșeală.
 3. În modul VISUAL, putem să selectăm text, și să îl ștergem cu ~d~.
 
 În cazurile numerotate, conținutul șters este automat stocat în clipboard.
@@ -95,33 +116,183 @@ Pentru a șterge text, putem șterge cu BACKSPACE în modul INSERT.
 Copiere în engleză se mai numește (y)ank.
 
 - Pentru a copia o linie în modul NORMAL, ~yy~.
-- Pentru a copia mai multe linii, în modul NORMAL, ~y<nr_linii>y~
+- Pentru a copia mai multe linii, în modul NORMAL, ~<nr_linii>yy~
 - Pentru a copia ceva selectat, în modul VISUAL, ~y~
 
 ***** lowercase și UPPERCASE automat
 Se selectează în modul VISUAL textul dorit a fi procesat.
 - Lowercase: ~u~
 - Lowercase: ~U~ (U mare / ~SHIFT+u~)
+  
+***** Search
+- În NORMAL mode, se scrie ~/cuvânt~ pentru găsirea următorului "cuvânt".
+- În NORMAL mode, se scrie ~?cuvânt~ pentru găsirea anteriorului "cuvânt".
+- În NORMAL mode, se pune cursorul pe un cuvânt target deja scris, și se scrie ~SHIFT+8~ pentru găsirea următorului cuvânt.
+- În NORMAL mode, ~n~ pentru a continua găsirea următorului cuvânt, și ~N~ pentru anterior.
 
-*** vi
-Vi este prima variantă a acestui tip de editor inițial lansată în 1976. Nu este deloc intuitivă folosirea lui.
+Notă: Automat se va da highlight pe toate cuvintele din document care au match.
+  
+***** Replace
+Pentru înlocuire, se folosesc expresii regulate. Pentru pattern-uri dificile, poți folosi https://regex101.com/ pentru a verifica dacă expresia ta este corectă.
 
-Este recomandată folosirea unei versiuni mai noi, precum Vim ori NeoVim.
+****** Global
+Înlocuirea globală se referă la tot textul, nu doar o selecție de text.
 
-*** vim
-Vi IMproved este varianta îmbunătățită a vi, inițial lansată în 1992, și încă menținută.
+~:%s/pattern-text-de-inlocuit/text-inlocuitor/[FLAG-uri RegEx]~
 
-*** nvim
-NeoVim este varianta și mai îmbunătățită a Vim, însă dacă nu ești un utilizator expert care dorește să customizeze editorul, atunci Vim este echivalent de bun.
+****** Selecție locală
+1. Se selectează textul
+2. ~:~ -> automat se completează cu ~'<,'>~
+3. Se scrie ~s/pattern-text-de-inlocuit/text-inlocuitor/[FLAG-uri RegEx]~
+   
+***** Fă un lucru de mai multe ori
+Să zicem că vrei să faci un lucru de mai multe ori. Pentru asta, în modul NORMAL scrii numărul de repetări + comanda vrei să e execuți.
+
+De exemplu, dacă vrei să scrii un lucru de 12 ori, poți scrie ~12i~, iar când revii în modul NORMAL, ceea ce ai scris se va scrie de 12 ori.
+
+***** Last action
+Să zicem că ai scris, șters, dat replace la ceva, etc. Poate vrei să faci din nou acel lucru. 
+
+În modul NORMAL, scrie 
+   
+***** Macro-uri
+Macro-urile în Vim sunt practic niște comenzi programabile. Ele sunt acțiuni în lanț, care automatizează unele lucruri, bazat pe acțiunile pe care le vei înregistra.
+
+Este destul de dificil să faci un macro, deoarece poți greși foarte ușor, însă macro-urile pot fi excelent de utile în task-uri repetitive, cu multe acțiuni dependente fiecare de cealaltă, migăloase și în care expresile regulate sunt imposibil de aplicat.
+
+Drept exemplu, presupunem că vrem să luăm fiecare al treilea cuvânt din fiecare linie, să îi facem UPPERCASE și să îi dăm wrap în paranteze, al doilea caracter din cuvânt să îl înlocuim cu numărul 67, iar apoi la sfârșitul liniei să scriem "Hello World!"
+
+Pentru a face acest macro
+1. În modul NORMAL scriem ~q~.
+2. Atribuim un caracter la care să înregistrăm macrocomanda. Vom lua ca exemplu litera ~m~, însă poate fi orice literă, cât timp o ținem minte. În acest moment, am pornit înregistrarea comenzilor, iar orice acțiune va determina cum va fi rulat macro-ul.
+3. Acum facem acțiunile de tip pattern care le-am rula pentru un anumit element din text. Acest element poate fi orice vrem să edităm.
+   A. Ne ducem la începutul rândului cu ~^~.
+   B. Ne ducem la al treilea cuvânt cu ~2W~ (W mare / ~SHIFT+w~) sau ~W~ (W mare) de două ori.
+   C. Începem să selectăm cu ~v~.
+   D. Selectăm tot cuvântul cu ~E~ (E mare).
+   E. Dăm UPPERCASE cu ~U~ (U mare).
+   F. Ne ducem la al doilea caracter cu săgeată-dreapta odată, sau ~l~ odată.
+   G. Ștergem caracterul cu ~x~.
+   H. Intrăm în modul INSERT cu ~i~.
+   I. Scriem '67'.
+   J. Ieșim din modul INSERT înapoi în modul NORMAL cu ~ESC~.
+   K. Ne ducem la începutul cuvântului cu ~B~.
+   L. Intrăm în modul INSERT.
+   M. Scriem "(".
+   N. Ieșim din modul INSERT înapoi în modul NORMAL cu ~ESC~.
+   O. Ducem cursorul la sfârșitul cuvântului minus un caracter cu ~E~ (E mare)
+   P. Mutăm cursorul la dreapta cu un singur caracter, folosind săgeată-dreapta sau ~l~.
+   Q. Intrăm în modul INSERT.
+   R. Scriem ")".
+   S. Ieșim din modul INSERT înapoi în modul NORMAL cu ~ESC~.
+   T. Ne ducem la sfârșitul liniei și intrăm în modul INSERT în același timp cu ~A~ (A mare).
+   U. Scriem textul "Hello World!"
+   V. Ne ducem la sfârșitul liniei și intrăm în modul INSERT în același timp cu ~A~ (A mare).
+   W. Ca ultima acțiune din macro, ne asigurăm că mutăm cursorul în următorul rând cu săgeată-jos sau ~j~.
+4. Închidem înregistrarea macrocomandei cu ~q~. Felicitări! Ai înregistrat o multitudine de acțiuni într-o macro.
+
+Ca să folosești macro-ul, îl rulezi odată cu ~@<literă_atribuită>~. Notează faptul că vim nu a înregistrat timpul care a luat ca să înregistrezi, ci doar comenzile înregistrate.
+
+Însă să fim serioși. Nu ai făcut 23 de acțiuni doar ca să îl rulezi pentru un singur rând. Probabil că vrei să îl rulezi pentru 5000 de rânduri.
+
+În cazul nostru, am scrie ~5000@m~. Probabil că o să ia ceva timp, poate vreo 3 minute, sau chiar mai mult. Până la urmă, trebuie să ruleze 23 de acțiuni de 5000 de ori. Însă dacă stai să te gândești, tocmai ce ai automatizat un set de acțiuni, care probabil că ar dura în total 5 ore dacă ai edita manual. Poate chiar mai mult!
+
+Apropo, să zicem că am greșit numărătoarea, și în realitate sunt mai puțin de 5000 de rânduri. Vim este deștept, și va opri executarea macro-ului automat la sfârșitul fișierului.
+
+Însă să nu sărim încă la concluzii. Notează faptul că în loc să ne mutăm 7 caractere în stânga, 14 caractere în dreapta, etc, am folosit comenzi precum ~^~ (mută cursorul la începutul liniei), ~E~ (mută cursorul înainte la sfârșitul cuvântului), ~W~ (mută cursorul înainte la începutul cuvântului), ~A~ (mută cursorul la sfârșitul liniei și intră în modul INSERT), ~B~ (mută cursorul înapoi la sfârșitul cuvântului), etc.  Motivul? Cuvintele pot fi de lungimi diferite, liniile pot avea un număr diferit de cuvinte, etc.  Dacă sărim peste o singură acțiune, sau nu folosim acțiunea corectă pentru toate cazurile posibile, este foarte posibil să edităm text într-o locație diferită de cea vrută, astfel creând un lanț de evenimente nedorite.
+
+De asemenea, există multe posibilități de implementare. De exemplu, puteam optimiza macro-ul la acțiunea O. și P.: puteam folosi o singură acțiune cu ~a~ (intră în modul INSERT în partea dreaptă).
+
+***** Movement
+Săgețile de pe testatură și mouse-ul sunt metode lente de mișcare.
+
+Pentru asta, majoritatea utilizatorilor folosesc în modul NORMAL movement-ul hjkl:
+- ~h~ --- stânga
+- ~j~ --- jos
+- ~k~ --- sus
+- ~l~ --- dreapta
+
+În extensie, se mai poate folosi ~g~ în combinație cu ~j~ sau ~k~ pentru a sări paragrafe:
+- ~gj~ --- Sari un paragraf jos.
+- ~gk~ --- Sari un paragraf în sus.
+
+De asemenea, mai putem utiliza următoarele comenzi în NORMAL mode pentru movement:
+
+- ~:număr_linie~ --- Mută cursorul la linia ~număr_linie~
+- ~gg~ --- Mută cursorul în prima linie din document
+- ~G~ --- Mută cursorul în ultima linie din document
+- ~^~ --- Mută cursorul la începutul liniei
+- ~$~ --- Mută cursorul la capătul liniei
+- ~E~ --- Mută cursorul înainte, la sfârșitul cuvântului
+- ~e~ --- Mută cursorul înainte, la sfârșitul cuvântului, până la un caracter non-alphanumeric (ex: "-")
+- ~W~ --- Mută cursorul înainte, la începutul cuvântului
+- ~w~ --- Mută cursorul înainte, la începutul cuvântului, până la un caracter non-alphanumeric (ex: "-")
+- ~A~ --- Mută cursorul la sfârșitul liniei și intră în modul INSERT
+- ~a~ --- Intră în modul INSERT cu cursorul în partea dreaptă
+- ~I~ --- Mută cursorul la începutul liniei și intră în modul INSERT
+- ~i~ --- Intră în modul INSERT cu cursorul în partea stangă
+- ~B~ --- Mută cursorul înapoi, la începutul cuvântului
+- ~b~ --- Mută cursorul înapoi, la începutul cuvântului, până la un caracter non-alphanumeric (ex: "-") sau whitespace
+  
+***** Concluzie
+Vim este foarte versatil, și nu pot acoperi toate funcționalitățile sale. Nici nu am acoperit plugin-urile, care sunt programe 3rd-party ce extind funcționalitățile vim.
+
+Pot recomanda totuși să îți instalezi o temă de stil, un linter (formatează codul automat), un project tree (pentru manipularea fișierelor din proiect mai ușoară) și un LSP pentru limbajele de programare cu care lucrezi (indică erori, avertizări și note).
+
+De asemenea, îți recomand să configurezi vim ca să afișeze o bară cu numere pentru linii, și să legi sistemul de clipboard din vim cu sistemul de clipboard al sistemului de operare.
+
+** GNU Emacs
+[[https://en.wikipedia.org/wiki/Emacs][Emacs]] este un editor extensibil (Emacs -> "Extensible Macros"), inițial scrisă undeva în anii 1970.
+
+În momentul de față, [[https://www.gnu.org/software/emacs/][GNU Emacs]] este cea mai populară formă de Emacs, și cu toate că proiectul este foarte vechi, este încă menținută iar dezvoltarea este activă.
+
+Cu toate acestea, nu voi acoperi un tutorial pentru Emacs, deoarece Emacs este cu mult mai greu de învățat decât Vi.
+
+Având în vedere cât de extensibil și versatil este Emacs, se glumește pe internet cum că Emacs ar fi un sistem de operare excelent, însă îi lipsește un editor de text decent. Aceasta este evident propagandă a utilizatorilor Vi, deoarece sistemul de operare GNU Emacs are un editor excelent de bun :)
 
 ** ed - tHe sTanDArd teXt EdIToR ????
-- WIP
+[[https://en.wikipedia.org/wiki/Ed_(text_editor)][Ed]] este un editor de text care este de asemenea și unul dintre primele editoare de text. Acesta este editorul de text standard pentru sistemul de operare Unix, și a fost conceput pentru anii când monitoarele nu existau, iar textul se printa pe [[https://en.wikipedia.org/wiki/Teleprinter][teletype writere]] (o mașină de scris). 
+
+Însă din moment ce a fost conceput pentru [[https://en.wikipedia.org/wiki/Teleprinter][TTY]]-uri fizice, asta înseamnă că are limitări mari.
+
+TTY-urile erau foarte lente, memoria era puțină, puterea de calcul era joasă -- deci aveam nevoie să folosim cât mai puține caractere.
+
+Asta îl face foarte criptic. Nu ai niciun status, trebuie să ții minte în ce mod ești, ce ai scris la o anumită linie, etc.
+
+De asemenea, dacă făceai o eroare (ce este extrem de ușor să faci), mesajul pe care îl vrei primi va fi literalmente:
+
+?
+
+Doar un semn de întrebare. Nimic altceva. Este responsabilitatea ta să îți dai seama ce ar putea însemna acel semn de întrebare. 
+
+Asta face utilizarea editorului Ed un chin, deci nu o să acopăr un tutorial pentru el.
+
+Totuși, uite niște glume:
 - https://www.gnu.org/fun/jokes/ed.html
 - https://www.gnu.org/fun/jokes/ed-msg.html
 
-** Altele
-- VSCodium - FOSS
-- MS VSCode - Preferabil VSCodium
-- Sublime Text
-- Geany
-- Code::Blocks
+?
+
+exit
+
+?
+
+quit
+
+?
+
+^C
+
+?
+
+^D
+
+?
+
+** Alte editoare de text
+- [[https://vscodium.com/][VSCodium]] --- Free software; GUI
+- [[https://code.visualstudio.com/][MS VSCode]] --- Executabil proprietar (nu fii păcălit de MS), telemetrie activată, încearcă VSCodium în schimb; GUI
+- [[https://www.sublimetext.com/][Sublime Text]] --- Proprietar; GUI
+- [[https://www.geany.org/][Geany]] --- Free software; GUI
+- [[https://www.codeblocks.org/][Code::Blocks]] --- Free software; GUI; ai fi animal să folosești așa ceva
+- etc
